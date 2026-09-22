@@ -1,0 +1,19 @@
+{
+  "name": "react-microfrontend-workspace",
+  "version": "1.0.0",
+  "description": "React Microfrontend Architecture (Host, Products, Cart) using Webpack Module Federation",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && cd host && npm install && cd ../products && npm install && cd ../cart && npm install",
+    "start": "concurrently --kill-others-on-fail --prefix \"[{name}]\" --names \"HOST,PRODUCTS,CART\" --prefix-colors \"blue,green,magenta\" \"npm run start:host\" \"npm run start:products\" \"npm run start:cart\"",
+    "start:host": "cd host && npm start",
+    "start:products": "cd products && npm start",
+    "start:cart": "cd cart && npm start",
+    "build": "concurrently \"cd host && npm run build\" \"cd products && npm run build\" \"cd cart && npm run build\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "author": "React Developer",
+  "license": "MIT"
+}
